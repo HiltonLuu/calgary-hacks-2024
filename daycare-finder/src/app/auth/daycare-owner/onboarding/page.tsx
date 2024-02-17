@@ -72,36 +72,48 @@ export default function Onboarding() {
           <Input className="w-96" type="text" id="price" placeholder="10" />
         </div>
       </div>
-      <div className="flex gap-20 justify-start items-center">
-        <div className="flex gap-3 items-center">
-          <p className="text-lg font-semibold">Home Daycare Capacity</p>
-          <div className="flex items-center gap-3">
-            <Button
-              onClick={() => {
-                if (capacity > 1) {
-                  setCapacity(capacity - 1);
-                }
-              }}
-            >
-              -
-            </Button>
-            <p className="text-xl font-semibold">{capacity}</p>
-            <Button
-              onClick={() => {
-                if (capacity < 6) {
-                  setCapacity(capacity + 1);
-                }
-              }}
-            >
-              +
-            </Button>
-          </div>
-        </div>
+      <div className="flex gap-36 justify-start items-center">
         <div>
           <Label htmlFor="picture" className="text-lg">
             Daycare Certification PDF
           </Label>
           <Input id="picture" type="file" />
+        </div>
+        <div>
+          <Label htmlFor="location" className="text-lg">
+            Languages Spoken
+          </Label>
+          <Input
+            className="w-96"
+            type="text"
+            id="location"
+            placeholder="English, Arabic, Punjabi, Mandarin"
+          />
+        </div>
+      </div>
+
+      <div className="flex gap-20 items-center">
+        <p className="text-lg font-semibold">Home Daycare Capacity</p>
+        <div className="flex items-center gap-3">
+          <Button
+            onClick={() => {
+              if (capacity > 1) {
+                setCapacity(capacity - 1);
+              }
+            }}
+          >
+            -
+          </Button>
+          <p className="text-xl font-semibold">{capacity}</p>
+          <Button
+            onClick={() => {
+              if (capacity < 6) {
+                setCapacity(capacity + 1);
+              }
+            }}
+          >
+            +
+          </Button>
         </div>
       </div>
 
