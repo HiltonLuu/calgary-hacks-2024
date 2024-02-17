@@ -2,6 +2,7 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { useParams } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import {
   getAuth,
   onAuthStateChanged,
@@ -26,7 +27,7 @@ import {
 } from "firebase/firestore";
 
 // Create a context for managing user information
-const UserContext = createContext();
+export const UserContext = createContext();
 
 const provider = new GoogleAuthProvider();
 
@@ -42,7 +43,7 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null); // State for storing the current user
   const [currentUser, setCurrentUser] = useState(null);
   const [loadingAuthState, setLoadingAuthState] = useState(true); // State to track loading of auth state
-  // const navigate = useNavigate(); // Hook for navigating between routes
+  const router = useRouter();
   const [isNewGoogleUser, setIsNewGoogleUser] = useState(false);
   const [checkError, setCheckError] = useState();
   const [imageUrl, setImageUrl] = useState(null);
@@ -56,10 +57,6 @@ export const UserProvider = ({ children }) => {
       loggedIn: true,
       firstName: "",
       lastName: "",
-      age: "",
-      sex: "",
-      // phobia: "",
-      registered: true,
       admin: false,
     };
     console.log("user Data", addUserData);
@@ -79,10 +76,7 @@ export const UserProvider = ({ children }) => {
         loggedIn: true,
         firstName: result.firstName,
         lastName: result.lastName,
-        age: result.age,
-        sex: result.sex,
-        phobia: result.phobia,
-        registered: false,
+
         admin: false,
         // Add any other relevant user details here
       };
@@ -117,7 +111,8 @@ export const UserProvider = ({ children }) => {
       setTimeout(() => {
         setLoadingAuthState(false);
       }, 1000); // 1000 milliseconds delay
-      navigate("/profile");
+      // navigate("/profile");
+      router.push("/");
     } catch (error) {
       console.log("error");
       console.log(error.message);
@@ -168,7 +163,7 @@ export const UserProvider = ({ children }) => {
         setTimeout(() => {
           setLoadingAuthState(false);
         }, 1000); // Delay for better user experience
-        // navigate("/signup"); // Navigate to login or another appropriate route after logout
+        router.push("/"); // Navigate to login or another appropriate route after logout
       } catch (error) {
         console.error("Error signing out: ", error);
       }
@@ -208,7 +203,7 @@ export const UserProvider = ({ children }) => {
           userId: userId,
         };
         addNewEmailUser(data);
-        navigate("/welcome");
+        router.push("/");
         // ...
       })
       .catch((error) => {
@@ -241,7 +236,7 @@ export const UserProvider = ({ children }) => {
       );
       // Signed in
       const user = userCredential.user;
-      navigate("/welcome");
+      router.push("/");
       // ... other logic here
     } catch (error) {
       console.error("Error during sign-in:", error);
