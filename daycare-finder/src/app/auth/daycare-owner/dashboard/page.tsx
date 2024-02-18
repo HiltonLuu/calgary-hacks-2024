@@ -19,6 +19,15 @@ import {
 import { Calendar as CalendarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "@/components/ui/dialog";
 
 const childrenList = [
 	{
@@ -26,36 +35,48 @@ const childrenList = [
 		time: "7:00am - 4:00pm",
 		image: "/assets/kyle-peyton-C0H05P-t3g4-unsplash.jpg",
 		extraInfo: "Allergic to peanuts",
+		parentName: "Mother",
+		parentPhone: "(123)-456-7890",
 	},
 	{
 		name: "Dieter",
 		time: "7:00am - 4:00pm",
 		image: "/assets/shravan-k-acharya-cuStP_i-xPg-unsplash.jpg",
 		extraInfo: "Allergic to peanuts",
+		parentName: "Mother",
+		parentPhone: "(123)-456-7890",
 	},
 	{
 		name: "Maira",
 		time: "7:00am - 4:00pm",
 		image: "/assets/kyle-peyton-C0H05P-t3g4-unsplash.jpg",
 		extraInfo: "Allergic to peanuts",
+		parentName: "Mother",
+		parentPhone: "(123)-456-7890",
 	},
 	{
 		name: "Hilton",
 		time: "7:00am - 4:00pm",
 		image: "/assets/shravan-k-acharya-cuStP_i-xPg-unsplash.jpg",
 		extraInfo: "Allergic to peanuts",
+		parentName: "Mother",
+		parentPhone: "(123)-456-7890",
 	},
 	{
 		name: "Liam",
 		time: "7:00am - 4:00pm",
 		image: "/assets/kyle-peyton-C0H05P-t3g4-unsplash.jpg",
 		extraInfo: "Allergic to peanuts",
+		parentName: "Mother",
+		parentPhone: "(123)-456-7890",
 	},
 	{
 		name: "Liam",
 		time: "7:00am - 4:00pm",
 		image: "/assets/kyle-peyton-C0H05P-t3g4-unsplash.jpg",
 		extraInfo: "Allergic to peanuts",
+		parentName: "Mother",
+		parentPhone: "(123)-456-7890",
 	},
 ];
 
@@ -119,77 +140,51 @@ export default function Dashboard() {
 			<div className="flex flex-wrap w-full p-4 gap-4">
 				{childrenList.map((child, index) => {
 					return (
-						<Card key={index} className="w-64">
-							<CardHeader>
-								<div className="flex items-center justify-between">
-									<CardTitle>{child.name}</CardTitle>
-									<Avatar>
-										<AvatarImage className="object-cover" src={child.image} />
-										<AvatarFallback>CN</AvatarFallback>
-									</Avatar>
-								</div>
-								<CardDescription>Card Description</CardDescription>
-							</CardHeader>
-							<CardContent>
-								<p>{child.time}</p>
-							</CardContent>
-							<CardFooter>
-								<p>{child.extraInfo}</p>
-							</CardFooter>
-						</Card>
+						<Dialog key={index}>
+							<DialogTrigger>
+								<Card className="w-64">
+									<CardHeader>
+										<div className="flex items-center justify-between">
+											<CardTitle>{child.name}</CardTitle>
+											<Avatar>
+												<AvatarImage
+													className="object-cover"
+													src={child.image}
+												/>
+												<AvatarFallback>CN</AvatarFallback>
+											</Avatar>
+										</div>
+										<CardDescription className="text-left">
+											Card Description
+										</CardDescription>
+									</CardHeader>
+									<CardFooter>
+										<p>{child.extraInfo}</p>
+									</CardFooter>
+								</Card>
+							</DialogTrigger>
+							<DialogContent>
+								<DialogHeader>
+									<div className="flex items-center justify-between">
+										<DialogTitle>{child.name}</DialogTitle>
+										<Avatar className="mr-4">
+											<AvatarImage className="object-cover" src={child.image} />
+											<AvatarFallback>CN</AvatarFallback>
+										</Avatar>
+									</div>
+									<DialogDescription>{child.extraInfo}</DialogDescription>
+									<DialogDescription>
+										Parent name: {child.parentName}
+									</DialogDescription>
+									<DialogDescription>
+										Parent phone number: {child.parentPhone}
+									</DialogDescription>
+								</DialogHeader>
+							</DialogContent>
+						</Dialog>
 					);
 				})}
 			</div>
 		</div>
 	);
 }
-
-
-
-
-import * as React from "react"
-import * as AvatarPrimitive from "@radix-ui/react-avatar"
-
-
-const Avatar = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
->(({ className, ...props }, ref) => (
-  <AvatarPrimitive.Root
-    ref={ref}
-    className={cn(
-      "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full",
-      className
-    )}
-    {...props}
-  />
-))
-Avatar.displayName = AvatarPrimitive.Root.displayName
-
-const AvatarImage = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Image>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
->(({ className, ...props }, ref) => (
-  <AvatarPrimitive.Image
-    ref={ref}
-    className={cn("aspect-square h-full w-full", className)}
-    {...props}
-  />
-))
-AvatarImage.displayName = AvatarPrimitive.Image.displayName
-
-const AvatarFallback = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Fallback>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
->(({ className, ...props }, ref) => (
-  <AvatarPrimitive.Fallback
-    ref={ref}
-    className={cn(
-      "flex h-full w-full items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800",
-      className
-    )}
-    {...props}
-  />
-))
-AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
-
