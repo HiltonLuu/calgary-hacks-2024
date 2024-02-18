@@ -13,7 +13,7 @@ const imageUrls = [
   {
     name: "Kids Care Crowfoot",
     stars: 4.5,
-    price: 10,
+    price: 25,
     url: "daycarePhoto.jpg",
     spots: 3,
     location: "Arbour Grove",
@@ -25,7 +25,7 @@ const imageUrls = [
   {
     name: "Maira's Daycare",
     stars: 4.6,
-    price: 12,
+    price: 18,
     url: "/assets/dc1.jpeg",
     spots: 3,
     location: "Beacon Hill",
@@ -37,7 +37,7 @@ const imageUrls = [
   {
     name: "Dieter's Daycare",
     stars: 2.2,
-    price: 12,
+    price: 21,
     url: "/assets/dc2.jpg",
     spots: 3,
     location: "Royal Oak",
@@ -49,7 +49,7 @@ const imageUrls = [
   {
     name: "Liam's Daycare",
     stars: 4.7,
-    price: 12,
+    price: 23,
     url: "/assets/dc3.jpeg",
     spots: 5,
     location: "Brentwood",
@@ -61,7 +61,7 @@ const imageUrls = [
   {
     name: "Hilton's Daycare",
     stars: 4.3,
-    price: 12,
+    price: 29,
     url: "/assets/dc4.jpeg",
     spots: 5,
     location: "Castleridge",
@@ -73,7 +73,7 @@ const imageUrls = [
   {
     name: "Anthony's Daycare",
     stars: 4.9,
-    price: 12,
+    price: 26,
     url: "/assets/dc5.jpeg",
     spots: 2,
     location: "Marlborough",
@@ -84,7 +84,6 @@ const imageUrls = [
     city: "Toronto",
   },
 ];
-
 export default function Results() {
   const router = useRouter();
   const { myCity, myCount, fromDate, toDate } = useUserContext();
@@ -184,7 +183,7 @@ export default function Results() {
                                 ${data.price}
                               </div>
                               <div className="text-md font-semibold text-gray-600">
-                                /hour
+                                /day
                               </div>
                             </div>
 
@@ -202,11 +201,11 @@ export default function Results() {
           ) : (
             <>
               {" "}
-              <div className="text-xl text-gray-400 font-semibold mt-2">
+              <div className="text-xl text-gray-400 font-semibold mt-2 py-24 px-8">
                 No Results
               </div>
               <div className="mt-5 border-t-2 border-gray-100">
-                <div className="text-lg font-bold mt-4">
+                <div className="text-xl font-bold mt-4 px-4 mb-4">
                   Explore These popular Daycares
                 </div>
                 <div className="grid grid-cols-4">
