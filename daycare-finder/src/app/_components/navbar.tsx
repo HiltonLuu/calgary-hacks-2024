@@ -14,7 +14,7 @@ export default function Navbar() {
   return (
     <div className="flex justify-between px-12 py-6 items-center shadow-lg">
       <div className="text-xl">CareNest</div>
-      <div className="text-xl flex gap-12 items-center">
+      <div className="text-lg flex gap-12 items-center">
         <ul className="flex gap-5">
           <li>
             <Link href="/">Home</Link>

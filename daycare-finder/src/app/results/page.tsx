@@ -139,55 +139,126 @@ export default function Results() {
           <SearchBar />
         </div>
 
-        <div className="border-t-2 mt-5">
+        <div className="border-t-2  border-gray-100 mt-7">
           {" "}
-          <div className="text-lg text-gray-600">Results for {myCity}</div>
-          <div className="flex gap-2">
-            {" "}
-            {filteredResults.map((data, index) => (
-              <div key={index} className="pl-1 md:basis-1/2 lg:basis-1/4">
-                <div className="p-1">
-                  <Card className="w-72 h-100">
-                    <CardContent
-                      className="flex aspect-square p-3 flex-col shadow-lg rounded-xl  hover:bg-gray-100 cursor-pointer hover:scale-105 transition ease duration-100 "
-                      onClick={() => router.push(data.click)}
-                    >
-                      {/* Display the image */}
-                      <img
-                        src={data.url}
-                        alt={`Slide ${index + 1}`}
-                        className="w-full h-full object-cover rounded-xl"
-                      />
-                      <div className="flex items-center mt-2 justify-between">
-                        <div className="text-xl  font-bold ">{data.name}</div>
-                        <div className="flex gap-2 items-center">
-                          <IoStar /> <div className="text-xl">{data.stars}</div>
-                        </div>
-                      </div>
-                      <div className="flex gap-2 items-center mt-3">
-                        <IoLocationSharp />
-                        <div className="text-xl">{data.location}</div>
-                      </div>
-                      <div className="flex items-center mt-8 border-top-2 justify-between mb-9">
-                        <div className="flex">
-                          <div className="text-xl  font-bold ">
-                            ${data.price}
+          {filteredResults.length > 0 ? (
+            <>
+              {" "}
+              <div className="text-lg text-gray-400 font-semibold mt-2">
+                Results for {myCity}
+              </div>
+              <div className="grid grid-cols-4 mt-4">
+                {" "}
+                {filteredResults.map((data, index) => (
+                  <div key={index} className="pl-1 md:basis-1/2 lg:basis-1/4">
+                    <div className="p-1">
+                      <Card className="w-80 h-103">
+                        <CardContent
+                          className="flex aspect-square p-3 flex-col shadow-lg rounded-xl  hover:bg-gray-100 cursor-pointer hover:scale-105 transition ease duration-100 "
+                          onClick={() => router.push(data.click)}
+                        >
+                          {/* Display the image */}
+                          <img
+                            src={data.url}
+                            alt={`Slide ${index + 1}`}
+                            className="w-full h-full object-cover rounded-xl"
+                          />
+                          <div className="flex items-center mt-2 justify-between">
+                            <div className="text-xl  font-bold ">
+                              {data.name}
+                            </div>
+                            <div className="flex gap-2 items-center">
+                              <IoStar />{" "}
+                              <div className="text-xl">{data.stars}</div>
+                            </div>
                           </div>
-                          <div className="text-md font-semibold text-gray-600">
-                            /hour
+                          <div className="flex gap-2 items-center mt-3">
+                            <IoLocationSharp />
+                            <div className="text-xl">{data.location}</div>
                           </div>
-                        </div>
+                          <div className="flex items-center mt-8 border-top-2 justify-between mb-9">
+                            <div className="flex">
+                              <div className="text-xl  font-bold ">
+                                ${data.price}
+                              </div>
+                              <div className="text-md font-semibold text-gray-600">
+                                /hour
+                              </div>
+                            </div>
 
-                        <div className="text-lg text-gray-600">
-                          {data.spots}/6 spots left
-                        </div>
+                            <div className="text-lg text-gray-600">
+                              {data.spots}/6 spots left
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <>
+              {" "}
+              <div className="text-xl text-gray-400 font-semibold mt-2">
+                No Results
+              </div>
+              <div className="mt-5 border-t-2 border-gray-100">
+                <div className="text-lg font-bold mt-4">
+                  Explore These popular Daycares
+                </div>
+                <div className="grid grid-cols-4">
+                  {" "}
+                  {imageUrls.map((data, index) => (
+                    <div key={index} className="pl-1 md:basis-1/2 lg:basis-1/4">
+                      <div className="p-1">
+                        <Card className="w-80 h-103">
+                          <CardContent
+                            className="flex aspect-square p-3 flex-col shadow-lg rounded-xl  hover:bg-gray-100 cursor-pointer hover:scale-105 transition ease duration-100 "
+                            onClick={() => router.push(data.click)}
+                          >
+                            {/* Display the image */}
+                            <img
+                              src={data.url}
+                              alt={`Slide ${index + 1}`}
+                              className="w-full h-full object-cover rounded-xl"
+                            />
+                            <div className="flex items-center mt-2 justify-between">
+                              <div className="text-xl  font-bold ">
+                                {data.name}
+                              </div>
+                              <div className="flex gap-2 items-center">
+                                <IoStar />{" "}
+                                <div className="text-xl">{data.stars}</div>
+                              </div>
+                            </div>
+                            <div className="flex gap-2 items-center mt-3">
+                              <IoLocationSharp />
+                              <div className="text-xl">{data.location}</div>
+                            </div>
+                            <div className="flex items-center mt-8 border-top-2 justify-between mb-9">
+                              <div className="flex">
+                                <div className="text-xl  font-bold ">
+                                  ${data.price}
+                                </div>
+                                <div className="text-md font-semibold text-gray-600">
+                                  /hour
+                                </div>
+                              </div>
+
+                              <div className="text-lg text-gray-600">
+                                {data.spots}/6 spots left
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
+            </>
+          )}
         </div>
 
         {/* <h1>Results for {city}</h1>

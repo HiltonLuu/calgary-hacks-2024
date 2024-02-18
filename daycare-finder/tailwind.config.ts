@@ -21,6 +21,8 @@ const config = {
       colors: {},
       height: {
         "100": "28rem",
+        "102": "30rem",
+        "103": "31rem",
         "104": "32rem",
         "108": "36rem",
       },
