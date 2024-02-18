@@ -9,7 +9,7 @@ export default function Navbar() {
   const router = useRouter();
   const [popup, setPopup] = useState(false);
   const { currentUser, logout } = useUserContext();
-  console.log(currentUser);
+
   console.log(popup);
   return (
     <div className="flex justify-between px-12 py-6 items-center shadow-lg">
@@ -38,7 +38,7 @@ export default function Navbar() {
               Nest Your Home
             </div>
           </>
-        ) }
+        )}
         <div className="flex gap-4">
           <div className="flex border-2 px-5 relative rounded-xl py-2 cursor-pointer hover:bg-gray-100 transition duration-100 ease-in">
             {" "}
@@ -50,7 +50,7 @@ export default function Navbar() {
               <IoPerson size={25} />
             </button>
             {popup && (
-              <div className="flex flex-col absolute top-12 left-[-64px] bg-white w-40 shadow-xl p-4 gap-4 rounded-xl">
+              <div className="flex flex-col absolute top-16 left-[-64px] bg-red w-40 shadow-xl p-4 gap-4 rounded-xl z-10 bg-white">
                 {currentUser && currentUser.username ? (
                   <>
                     <div
