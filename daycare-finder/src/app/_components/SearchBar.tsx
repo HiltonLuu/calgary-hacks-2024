@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,6 +9,8 @@ import { useRouter } from "next/navigation";
 import { addDays } from "date-fns";
 import { DateRange } from "react-day-picker";
 import NumericStepper from "../../components/ui/numberstepper";
+import { UserContext } from "../context/userContext";
+const useUserContext = () => useContext(UserContext);
 export default function SearchBar() {
   const router = useRouter();
   const [city, setCity] = useState("");
@@ -17,6 +19,10 @@ export default function SearchBar() {
     from: new Date(),
     to: addDays(new Date(), 2),
   });
+  // const { city, setCity, count, setCount, setDateRanges, setToggle } =
+  //   useUserContext();
+  const { setMyCity, setMyCount, setFromDate, setToDate } = useUserContext();
+
   const [popup, setPopup] = useState(true);
 
   const handleSearch = () => {
@@ -27,19 +33,25 @@ export default function SearchBar() {
     const toDate = dateRange?.to
       ? dateRange.to.toISOString().split("T")[0]
       : "";
-
+    console.log(city, count, fromDate, toDate);
+    setMyCity(city);
+    setMyCount(count);
+    setFromDate(dateRange?.from || null);
+    setToDate(dateRange?.to || null);
+    // setDateRanges(dateRange);
     // Construct the query string
-    const queryString = `city=${encodeURIComponent(
-      city
-    )}&from=${encodeURIComponent(fromDate)}&to=${encodeURIComponent(
-      toDate
-    )}&count=${count}`;
+    // const queryString = `city=${encodeURIComponent(
+    //   city
+    // )}&from=${encodeURIComponent(fromDate)}&to=${encodeURIComponent(
+    //   toDate
+    // )}&count=${count}`;
 
     // Navigate using router.push with a string URL
-    router.push(`/results?${queryString}`);
+    // setToggle((prev: any) => !prev);
+    router.push(`/results`);
   };
   return (
-    <div className="px-6 py-4 bg-white border-2 rounded-xl flex items-center gap-4">
+    <div className="px-6 py-4 bg-white border-2 rounded-xl flex items-center gap-4 justify-between">
       <div className="flex flex-col gap-2">
         <Label htmlFor="city" className="text-md">
           Where
@@ -48,7 +60,7 @@ export default function SearchBar() {
           className="w-72"
           type="text"
           id="city"
-          placeholder="city"
+          placeholder="City Name"
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
@@ -74,7 +86,7 @@ export default function SearchBar() {
       </div>
       <div className="flex flex-col gap-2">
         <div className="text-lg">How Many</div>
-        <div className="w-40">
+        <div className="w-32">
           <NumericStepper value={count} setValue={setCount} min={0} max={10} />
         </div>
       </div>

@@ -10,7 +10,7 @@ export default function Navbar() {
   const [popup, setPopup] = useState(false);
   const { currentUser, logout } = useUserContext();
 
-  console.log(popup);
+  // console.log(popup);
   return (
     <div className="flex justify-between px-12 py-6 items-center shadow-lg">
       <div className="text-xl">CareNest</div>
