@@ -9,8 +9,8 @@ export default function Navbar() {
   const router = useRouter();
   const [popup, setPopup] = useState(false);
   const { currentUser, logout } = useUserContext();
-  console.log(currentUser);
 
+  console.log(popup);
   return (
     <div className="flex justify-between px-12 py-6 items-center shadow-lg">
       <div className="text-xl">CareNest</div>
@@ -23,20 +23,19 @@ export default function Navbar() {
             <Link href="/about">About Us</Link>
           </li>
         </ul>
-        {currentUser && !currentUser.username ? (
+        {currentUser && currentUser.username ? (
           <>
-            <div className="border-2 text-lg rounded-xl px-3 py-2 cursor-pointer">
-              Nest Your Home
-            </div>
-          </>
-        ) : (
-          <>
-            {" "}
             <div
               className="border-2 text-lg rounded-xl px-3 py-2 cursor-pointer hover:bg-gray-100 transistion duration-100 ease-in "
               onClick={() => router.push("/auth/daycare-owner/onboarding")}
             >
               Switch to Hosting
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="border-2 text-lg rounded-xl px-3 py-2 cursor-pointer">
+              Nest Your Home
             </div>
           </>
         )}
@@ -51,8 +50,18 @@ export default function Navbar() {
               <IoPerson size={25} />
             </button>
             {popup && (
-              <div className="flex flex-col absolute top-12 left-[-64px] bg-white w-40 shadow-xl p-4 gap-4 rounded-xl">
-                {currentUser && !currentUser.username ? (
+              <div className="flex flex-col absolute top-16 left-[-64px] bg-red w-40 shadow-xl p-4 gap-4 rounded-xl z-10 bg-white">
+                {currentUser && currentUser.username ? (
+                  <>
+                    <div
+                      className="text-lg p-2 hover:bg-gray-200 cursor-pointer"
+                      onClick={logout}
+                    >
+                      {" "}
+                      Log Out
+                    </div>
+                  </>
+                ) : (
                   <>
                     <div
                       className="text-lg p-2 hover:bg-gray-200 cursor-pointer"
@@ -65,16 +74,6 @@ export default function Navbar() {
                       onClick={() => router.push("/signup")}
                     >
                       Sign Up
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div
-                      className="text-lg p-2 hover:bg-gray-200 cursor-pointer"
-                      onClick={logout}
-                    >
-                      {" "}
-                      Log Out
                     </div>
                   </>
                 )}
