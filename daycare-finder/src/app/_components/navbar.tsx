@@ -4,16 +4,23 @@ import Link from "next/link";
 import { UserContext } from "../context/userContext";
 import { useRouter } from "next/navigation";
 import { IoPerson } from "react-icons/io5";
+import SearchBar from "./SearchBar";
 const useUserContext = () => useContext(UserContext);
 export default function Navbar() {
   const router = useRouter();
   const [popup, setPopup] = useState(false);
   const { currentUser, logout } = useUserContext();
-
-  // console.log(popup);
+  //   const isResultsPage = router.pathname === "/results";
+  //   console.log(isResultsPage);
   return (
     <div className="flex justify-between px-12 py-6 items-center shadow-lg">
-      <div className="text-xl">CareNest</div>
+      {/* <div className="text-xl">CareNest</div> */}
+      <img
+        src="/assets/logo.png"
+        className="w-28 cursor-pointer"
+        onClick={() => router.push("/")}
+      />
+
       <div className="text-lg flex gap-12 items-center">
         <ul className="flex gap-5">
           <li>

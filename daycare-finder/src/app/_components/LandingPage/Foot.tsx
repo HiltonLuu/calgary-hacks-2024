@@ -1,12 +1,19 @@
 import React from "react";
 import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa6";
+import { IoMailSharp } from "react-icons/io5";
+import { FaPhoneAlt } from "react-icons/fa";
 export default function Foot() {
   return (
-    <div className="h-56 bg-blue-800 flex justify-evenly items-center text-white">
-      <div className="flex flex-col gap-4 text-white">
-        <div className="text-2xl">CareNest</div>
-        <div className="text-lg">Email: contact@carenest.com</div>
-        <div className="text-lg">(123)-456-7890</div>
+    <div className="h-80 bg-rose-400 flex justify-evenly items-center text-black pb-12 pt-4">
+      <div className="flex flex-col gap-4 ">
+        {/* <div className="text-2xl">CareNest</div> */}
+        <img src="/assets/logo.png" className="w-32" />
+        <div className="text-lg flex gap-2 items-center">
+          <IoMailSharp /> contact@carenest.com
+        </div>
+        <div className="text-lg flex gap-2 items-center">
+          <FaPhoneAlt /> (123)-456-7890
+        </div>
       </div>
       <div className="flex flex-col gap-5">
         <div className="text-lg">About</div>
