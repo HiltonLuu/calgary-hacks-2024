@@ -1,7 +1,7 @@
 "use client";
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { useParams } from "react-router-dom";
+//import { useParams } from "react-router-dom";
 import { useRouter } from "next/navigation";
 import {
   getAuth,
