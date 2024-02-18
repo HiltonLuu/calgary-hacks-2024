@@ -5,7 +5,7 @@ import { UserContext } from "../context/userContext";
 import { useRouter } from "next/navigation";
 import { IoPerson } from "react-icons/io5";
 const useUserContext = () => useContext(UserContext);
-export default function navbar() {
+export default function Navbar() {
   const router = useRouter();
   const [popup, setPopup] = useState(false);
   const { currentUser, logout } = useUserContext();
@@ -34,7 +34,7 @@ export default function navbar() {
             {" "}
             <div
               className="border-2 text-lg rounded-xl px-3 py-2 cursor-pointer hover:bg-gray-100 transistion duration-100 ease-in "
-              onClick={() => router.push("/auth/daycare-owner/dashboard")}
+              onClick={() => router.push("/auth/daycare-owner/onboarding")}
             >
               Switch to Hosting
             </div>
