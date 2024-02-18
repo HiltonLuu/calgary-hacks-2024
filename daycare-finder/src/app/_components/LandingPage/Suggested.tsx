@@ -15,7 +15,7 @@ const imageUrls = [
     name: "Kids Care Crowfoot",
     stars: 4.5,
     price: 10,
-    url: "/assets/kidscarecrow.jpeg",
+    url: "daycarePhoto.jpg",
     spots: 3,
     location: "Arbour Grove",
     click: "/daycare",
