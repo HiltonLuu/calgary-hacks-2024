@@ -39,7 +39,7 @@ export default function SearchBar() {
     router.push(`/results?${queryString}`);
   };
   return (
-    <div className="px-6 py-2 bg-white border-2 rounded-lg flex items-center gap-4">
+    <div className="px-6 py-4 bg-white border-2 rounded-xl flex items-center gap-4">
       <div className="flex flex-col gap-2">
         <Label htmlFor="city" className="text-md">
           Where
@@ -78,7 +78,12 @@ export default function SearchBar() {
           <NumericStepper value={count} setValue={setCount} min={0} max={10} />
         </div>
       </div>
-      <button onClick={handleSearch}>Search</button>
+      <button
+        onClick={handleSearch}
+        className="bg-red-400 px-4 py-2 text-white rounded-xl"
+      >
+        Search
+      </button>
     </div>
   );
 }
