@@ -163,7 +163,7 @@ export default function Results() {
                             alt={`Slide ${index + 1}`}
                             className="w-full h-full object-cover rounded-xl"
                           />
-                          <div className="flex items-center mt-2 justify-between">
+                          <div className="flex items-center mt-4 justify-between">
                             <div className="text-xl  font-bold ">
                               {data.name}
                             </div>
@@ -174,7 +174,9 @@ export default function Results() {
                           </div>
                           <div className="flex gap-2 items-center mt-3">
                             <IoLocationSharp />
-                            <div className="text-xl">{data.location}</div>
+                            <div className="text-lg text-gray-600">
+                              {data.location}, {data.city}
+                            </div>
                           </div>
                           <div className="flex items-center mt-8 border-top-2 justify-between mb-9">
                             <div className="flex">
@@ -234,7 +236,9 @@ export default function Results() {
                             </div>
                             <div className="flex gap-2 items-center mt-3">
                               <IoLocationSharp />
-                              <div className="text-xl">{data.location}</div>
+                              <div className="text-lg text-gray-600">
+                                {data.location}, {data.city}
+                              </div>
                             </div>
                             <div className="flex items-center mt-8 border-top-2 justify-between mb-9">
                               <div className="flex">
