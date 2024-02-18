@@ -13,11 +13,11 @@ import { IoStar, IoLocationSharp } from "react-icons/io5";
 const imageUrls = [
   {
     name: "Kids Care Crowfoot",
-    stars: 4.9,
+    stars: 4.5,
     price: 10,
     url: "/assets/kidscarecrow.jpeg",
     spots: 3,
-    location: "Marlborough",
+    location: "Arbour Grove",
     click: "/daycare",
     fromDate: "2024-02-20",
     toDate: "2024-02-21",
