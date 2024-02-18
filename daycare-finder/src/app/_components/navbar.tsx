@@ -34,9 +34,9 @@ export default function Navbar() {
           </>
         ) : (
           <>
-            <div className="border-2 text-lg rounded-xl px-3 py-2 cursor-pointer">
+            {/* <div className="border-2 text-lg rounded-xl px-3 py-2 cursor-pointer">
               Nest Your Home
-            </div>
+            </div> */}
           </>
         )}
         <div className="flex gap-4">
