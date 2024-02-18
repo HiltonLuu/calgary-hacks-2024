@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Image from "next/image";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import Link from "next/link";
 
 export default function Onboarding() {
   const [capacity, setCapacity] = useState(1);
@@ -31,17 +32,6 @@ export default function Onboarding() {
     <div className="flex flex-col gap-10 items-center mt-20">
       <div className="flex justify-center gap-20">
         <div className="">
-          <Label htmlFor="hours" className="text-lg">
-            Hours of operation
-          </Label>
-          <Input
-            className="w-96"
-            type="text"
-            id="hours"
-            placeholder="9am-5pm"
-          />
-        </div>
-        <div className="">
           <Label htmlFor="name" className="text-lg">
             Daycare Name
           </Label>
@@ -50,6 +40,17 @@ export default function Onboarding() {
             type="text"
             id="name"
             placeholder="Your daycare name"
+          />
+        </div>
+        <div className="">
+          <Label htmlFor="hours" className="text-lg">
+            Hours of operation
+          </Label>
+          <Input
+            className="w-96"
+            type="text"
+            id="hours"
+            placeholder="9am-5pm"
           />
         </div>
       </div>
@@ -134,9 +135,11 @@ export default function Onboarding() {
         </div>
       </div>
 
-      <div>
-        <p className="text-xl font-semibold mb-5">Ameneties and Features</p>
-        <ToggleGroup type="multiple" className="gap-5">
+      <div className="px-64">
+        <p className="text-xl font-semibold mb-5 text-center">
+          Ameneties and Features
+        </p>
+        <ToggleGroup type="multiple" className="flex-wrap gap-5 mb-5">
           {dummyFeatures.map((item) => {
             return (
               <ToggleGroupItem
@@ -150,6 +153,13 @@ export default function Onboarding() {
           })}
         </ToggleGroup>
       </div>
+
+      <Link
+        href="/auth/daycare-owner/dashboard"
+        className="mb-10 rounded-md bg-black text-white py-4 px-10"
+      >
+        Done
+      </Link>
     </div>
   );
 }

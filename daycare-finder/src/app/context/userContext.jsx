@@ -1,8 +1,10 @@
 "use client";
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { useParams } from "react-router-dom";
+//import { useParams } from "react-router-dom";
+import { DateRange } from "react-day-picker";
 import { useRouter } from "next/navigation";
+import { addDays } from "date-fns";
 import {
   getAuth,
   onAuthStateChanged,
@@ -47,7 +49,12 @@ export const UserProvider = ({ children }) => {
   const [isNewGoogleUser, setIsNewGoogleUser] = useState(false);
   const [checkError, setCheckError] = useState();
   const [imageUrl, setImageUrl] = useState(null);
+  const [myCity, setMyCity] = useState("");
+  const [myCount, setMyCount] = useState(0);
+  const [fromDate, setFromDate] = useState(null);
+  const [toDate, setToDate] = useState(null);
 
+  const [toggle, setToggle] = useState(true);
   async function addNewGoogleUser(result) {
     const addUserData = {
       username: result.user.email.split("@")[0],
@@ -305,6 +312,14 @@ export const UserProvider = ({ children }) => {
     imageUrl,
     emailCheck,
     checkError,
+    myCity,
+    setMyCity,
+    myCount,
+    setMyCount,
+    fromDate,
+    setFromDate,
+    toDate,
+    setToDate,
   };
 
   // Provider component wrapping children with the user context
