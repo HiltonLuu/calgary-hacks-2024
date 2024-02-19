@@ -13,10 +13,10 @@ export default function Navbar() {
   //   const isResultsPage = router.pathname === "/results";
   //   console.log(isResultsPage);
   return (
-    <div className="flex justify-between px-12 py-6 items-center shadow-lg">
+    <div className="flex justify-between px-12 py-0 items-center bg-white ">
       {/* <div className="text-xl">CareNest</div> */}
       <img
-        src="/assets/logo.png"
+        src="/assets/newLogo.png"
         className="w-28 cursor-pointer"
         onClick={() => router.push("/")}
       />
