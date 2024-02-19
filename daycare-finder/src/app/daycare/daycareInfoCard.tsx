@@ -55,7 +55,7 @@ function daycareInfoCard() {
 
     return (
         <>
-            <div className='sticky flex justify-end pt-12 top-20 w-full'>
+            <div className='sticky flex justify-end pt-12 top-32 w-full'>
                 <div className='flex justify-center w-full  absolute '>
                     <div className='flex w-fit h-fit bg-white rounded-2xl shadow-xl border border-gray-200'>
 

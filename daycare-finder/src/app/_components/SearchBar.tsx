@@ -92,7 +92,7 @@ export default function SearchBar() {
       </div>
       <button
         onClick={handleSearch}
-        className="bg-red-400 px-4 py-2 text-white rounded-xl"
+        className="bg-yellow-400 px-4 py-2 text-white rounded-xl"
       >
         Search
       </button>

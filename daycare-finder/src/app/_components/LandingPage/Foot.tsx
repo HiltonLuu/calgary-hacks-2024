@@ -4,10 +4,10 @@ import { IoMailSharp } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 export default function Foot() {
   return (
-    <div className="h-80 bg-rose-400 flex justify-evenly items-center text-black pb-12 pt-4">
+    <div className="h-80 bg-yellow-300 flex justify-evenly items-center text-black pb-12 pt-4">
       <div className="flex flex-col gap-4 ">
         {/* <div className="text-2xl">CareNest</div> */}
-        <img src="/assets/logo.png" className="w-32" />
+        <img src="/assets/newLogo.png" className="w-32" />
         <div className="text-lg flex gap-2 items-center">
           <IoMailSharp /> contact@carenest.com
         </div>
